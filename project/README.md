@@ -18,7 +18,7 @@
 3. 프로젝트 환경 구성
   - babel, eslint, prettier 등의 환경 설정
 4. 외부 라이브러리 모듈화
-  - 
+  - node_modules/@types를 import 해오지 못하는 경우에는 @types를 직접 정의할 수 있고, tsconfig에서 직접 정의한 타입을 사용하도록 설정할 수 있다.
 
 
 ## 참고 자료

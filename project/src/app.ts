@@ -1,5 +1,6 @@
-import axios from 'axios';
-import Chart from 'chart.js';
+import axios, { AxiosResponse } from 'axios';
+import * as Chart from 'chart.js';
+import {CovidSummaryResponse} from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -39,11 +40,14 @@ function createSpinnerElement(id: string) {
 let isDeathLoading = false;
 let isRecoveredLoading = false;
 
+
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
+
+fetchCovidSummary().then(res => res.data.);
 
 enum CovidStatus {
   Confirmed = 'confirmed',
@@ -179,7 +183,8 @@ function renderChart(data: any, labels: any) {
   var ctx = $('#lineChart').getContext('2d');
   Chart.defaults.color = '#f5eaea';
   Chart.defaults.font.family = 'Exo 2';
-  new Chart(ctx, {
+  const Chart2 = require('chart.js');
+  new Chart2(ctx, {
     type: 'line',
     data: {
       labels,
