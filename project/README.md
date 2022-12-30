@@ -17,8 +17,10 @@
   - 가능한한 구체적인 타입으로 타입 정의
 3. 프로젝트 환경 구성
   - babel, eslint, prettier 등의 환경 설정
-4. 외부 라이브러리 모듈화
+4. 외부 라이브러리 모듈화 + any Type 없애기
   - node_modules/@types를 import 해오지 못하는 경우에는 @types를 직접 정의할 수 있고, tsconfig에서 직접 정의한 타입을 사용하도록 설정할 수 있다.
+  - interface와 type을 적절히 정의하여 any를 대체할 수 있다.
+5. strict 옵션 추가 후 타입 정의
 
 
 ## 참고 자료
