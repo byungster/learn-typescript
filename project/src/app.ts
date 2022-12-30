@@ -3,7 +3,7 @@ import { Chart } from 'chart.js';
 import {CovidSummaryResponse, CountrySummaryInfo, CountrySummaryResponse, Country} from './covid/index';
 
 // utils
-function $(selector: string) : HTMLElement | null {
+function $<T extends HTMLElement>(selector: string) : HTMLElement | null {
     return document.querySelector(selector);
 }
 function getUnixTimestamp(date: string) {
@@ -15,7 +15,7 @@ const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
 const deathsTotal = $('.deaths') as HTMLParagraphElement;
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
 const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
-const rankList = $('.rank-list');
+const rankList = $<HTMLOListElement>('.rank-list');
 const deathsList = $('.deaths-list');
 const recoveredList = $('.recovered-list');
 const deathSpinner = createSpinnerElement('deaths-spinner');
@@ -252,7 +252,7 @@ function setCountryRanksByConfirmedCases(data: CovidSummaryResponse) {
     p.textContent = value.Country;
     li.appendChild(span);
     li.appendChild(p);
-    rankList.appendChild(li);
+    rankList?.appendChild(li);
   });
 }
 
